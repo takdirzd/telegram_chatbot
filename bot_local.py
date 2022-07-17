@@ -25,7 +25,7 @@ bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     # TO DO: chat_id, full_name, message_text
-    chat_id = message.from_user.id
+    chat_id = message.chat.id
 
     first_name = message.from_user.first_name
     last_name = message.from_user.last_name
@@ -46,7 +46,7 @@ def send_welcome(message):
 @bot.message_handler(commands=['about'])
 def send_about(message):
     # TO DO: chat_id
-    chat_id = message.from_user.id
+    chat_id = message.chat.id
 
     # TO DO: subtitute text with static values
     with open('template_text/about.txt', mode='r', encoding='utf-8') as f:
@@ -81,7 +81,7 @@ df['gender'] = df['gender'].astype('category')
 @bot.message_handler(commands=['summary'])
 def ask_id_summary(message):
     # TO DO: chat_id (SAME AS CHECKPOINT 1)
-    chat_id = message.from_user.id
+    chat_id = message.chat.id
 
     markup = telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True)
     for i in unique_campaign:
@@ -92,7 +92,7 @@ def ask_id_summary(message):
 
 def send_summary(message):
     # TO DO: chat_id (SAME AS CHECKPOINT 1)
-    chat_id = message.from_user.id
+    chat_id = message.chat.id
     selected_campaign_id = message.text
 
     if selected_campaign_id in unique_campaign:
@@ -130,7 +130,7 @@ def send_summary(message):
 @bot.message_handler(commands=['plot'])
 def ask_id_plot(message):
     # TO DO: chat_id (SAME AS CHECKPOINT 1)
-    chat_id = message.from_user.id
+    chat_id = message.chat.id
 
     markup = telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True)
     for i in unique_campaign:
@@ -141,7 +141,7 @@ def ask_id_plot(message):
 
 def send_plot(message):
     # TO DO: chat_id (SAME AS CHECKPOINT 1)
-    chat_id = message.from_user.id
+    chat_id = message.chat.id
     selected_campaign_id = message.text
 
     if selected_campaign_id in unique_campaign:
